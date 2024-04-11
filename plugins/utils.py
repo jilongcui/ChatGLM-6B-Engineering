@@ -48,7 +48,6 @@ def log(event:str, type:str):
 		f.write(f'{logger}\n')
 
 def change_cfg(weather: bool, date: bool, web: bool, markmap: bool, files: bool, sd: bool):
-	plugin_list = plugin_status()
 	with open('./plugins/config.json', 'r', encoding='utf-8') as f:
 		result = f.read()
 	results=json.loads(result)
@@ -136,7 +135,6 @@ def validate_config():
 					log(f'Using {response.elapsed.total_seconds()} seconds to get https://cn.bing.com', "INFO")
 				except:
 					log('Error while browsering Internet. Functionality might be limited.', "ERROR")
-					os._exit(0)
 				log("Validation Passed.", "INFO")
 			except:
 				log('Failed to load config. Broken content.', "CRITICAL")
